@@ -1,0 +1,39 @@
+version: "2.1"
+
+services:
+  learn-kafka:
+    image: learn-kafka:latest
+    ports:
+      - "8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=local
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - DATASOURCE_HOSTNAME=postgres
+      - LOCALSTACK_HOSTNAME=localstack
+    depends_on:
+      - postgres
+#      - localstack
+
+  postgres:
+    # latest version support by aurora:
+    command: -p ${POSTGRES_PORT:-5432}
+    image: postgres:10.7
+    ports:
+      - ${POSTGRES_PORT:-5432}:${POSTGRES_PORT:-5432}
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+
+#  localstack:
+#    image: localstack/localstack
+#    ports:
+#      - "4572"
+#      - "4575"
+#      - "4576"
+#    environment:
+#      HOSTNAME_EXTERNAL: localstack
+#      SERVICES: "s3,sns,sqs"
+#      S3_PORT_EXTERNAL: "4572"
+#      SNS_PORT_EXTERNAL: "4575"
+#      SQS_PORT_EXTERNAL: "4576"
