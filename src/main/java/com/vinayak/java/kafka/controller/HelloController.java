@@ -8,6 +8,6 @@ public class HelloController {
 
     @GetMapping("/")
     public String homeEndpoint(){
-        return "Welcome Home";
+        return "Welcome to Vinayak's Ecosystem";
     }
 }
