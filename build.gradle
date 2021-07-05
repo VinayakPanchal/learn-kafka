@@ -5,7 +5,6 @@ plugins {
 	id "org.jetbrains.intellij" version "1.0"
 	id 'java-gradle-plugin'
 	id "com.avast.gradle.docker-compose" version "0.14.3"
-	id 'groovy'
 }
 
 group = 'com.vinayak.java'
@@ -53,7 +52,7 @@ dependencies {
 	implementation group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '4.11'
 	implementation group: 'com.gu', name: 'kinesis-logback-appender', version: '1.4.4'
 	implementation group: 'org.codehaus.groovy', name: 'groovy'
-	implementation group: 'org.slf4j', name: 'log4j-over-slf4j'
+	implementation group: 'org.slf4j', name: 'log4j-over-slf4j', version: '1.7.30'
 
 	// Lombok
 	compileOnly 'org.projectlombok:lombok'
